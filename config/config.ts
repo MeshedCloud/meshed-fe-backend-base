@@ -131,6 +131,10 @@ export default defineConfig({
     },
   ],
   mfsu: {
-    exclude :['@playwright/test']
+    exclude: ['@playwright/test'],
   },
+  // 多tabs布局，只需要配置下面两项即可
+  keepalive: [/./],
+  tabsLayout: {},
+  title: 'Meshed Cloud 研发中台',
 });

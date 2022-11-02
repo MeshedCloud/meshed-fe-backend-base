@@ -12,13 +12,14 @@ const Settings: LayoutSettings & {
   colorPrimary: '#1890ff',
   layout: 'mix',
   contentWidth: 'Fluid',
-  fixedHeader: false,
+  fixedHeader: true,
   fixSiderbar: true,
   colorWeak: false,
-  title: 'Ant Design Pro',
+  title: 'Meshed Cloud 研发中台',
   pwa: false,
   logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
   iconfontUrl: '',
+  splitMenus: true,
 };
 
 export default Settings;
