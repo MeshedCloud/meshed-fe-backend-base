@@ -1,21 +1,13 @@
 import { GithubOutlined } from '@ant-design/icons';
 import { DefaultFooter } from '@ant-design/pro-components';
-import { useIntl } from '@umijs/max';
+import '@umijs/max';
 
 const Footer: React.FC = () => {
-  const intl = useIntl();
-  const defaultMessage = intl.formatMessage({
-    id: 'app.copyright.produced',
-    defaultMessage: 'Meshed Cloud 研发中台',
-  });
-
+  const defaultMessage = 'Meshed Cloud 研发中台';
   const currentYear = new Date().getFullYear();
-
   return (
     <DefaultFooter
-      style={{
-        background: 'none',
-      }}
+      style={{ background: 'none' }}
       copyright={`${currentYear} ${defaultMessage}`}
       links={[
         {
@@ -40,5 +32,4 @@ const Footer: React.FC = () => {
     />
   );
 };
-
 export default Footer;

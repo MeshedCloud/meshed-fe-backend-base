@@ -3,7 +3,12 @@
  * */
 export default function access(initialState: { currentUser?: API.CurrentUser } | undefined) {
   const { currentUser } = initialState ?? {};
+  console.log(initialState);
   return {
     canAdmin: currentUser && currentUser.access === 'admin',
+    filterAccess: () => {
+      // todo 权限处理 route: any
+      return true;
+    },
   };
 }
