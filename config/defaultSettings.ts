@@ -11,13 +11,14 @@ const Settings: LayoutSettings & {
   // 拂晓蓝
   colorPrimary: '#1890ff',
   layout: 'mix',
-  contentWidth: 'Fluid',
-  fixedHeader: true,
+  splitMenus: true,
+  contentWidth: 'Fixed',
+  fixedHeader: false,
   fixSiderbar: true,
   colorWeak: false,
   title: 'Meshed Cloud 研发中台',
   pwa: false,
-  logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+  logo: 'http://s.meshed.cn/meshed/svg/logo-no-background.svg',
   iconfontUrl: '',
 };
 

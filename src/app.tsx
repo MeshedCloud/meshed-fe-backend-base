@@ -7,7 +7,8 @@ import type { RunTimeLayoutConfig } from '@umijs/max';
 import { history, Link } from '@umijs/max';
 import defaultSettings from '../config/defaultSettings';
 import { errorConfig } from './requestErrorConfig';
-import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
+import { getCurrentInfo } from '@/services/user/api';
+import { useState } from 'react';
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
@@ -22,13 +23,18 @@ export async function getInitialState(): Promise<{
   fetchUserInfo?: () => Promise<API.CurrentUser | undefined>;
 }> {
   const fetchUserInfo = async () => {
-    try {
-      const msg = await queryCurrentUser({
-        skipErrorHandler: true,
-      });
-      return msg.data;
-    } catch (error) {
-      history.push(loginPath);
+    /**
+     * 如果存在环境的话,存储中不存在TOKEN，直接去登入
+     */
+    if (REACT_APP_ENV) {
+      const token = localStorage.getItem('TOKEN');
+      if (!token) {
+        history.push(loginPath);
+      }
+    }
+    const res = await getCurrentInfo();
+    if (res.success) {
+      return res.data;
     }
     return undefined;
   };
@@ -56,11 +62,11 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
     },
     footerRender: () => <Footer />,
     onPageChange: () => {
-      const { location } = history;
-      // 如果没有登录，重定向到 login
-      if (!initialState?.currentUser && location.pathname !== loginPath) {
-        history.push(loginPath);
-      }
+      // const { location } = history;
+      // // 如果没有登录，重定向到 login
+      // if (!initialState?.currentUser && location.pathname !== loginPath) {
+      //   history.push(loginPath);
+      // }
     },
     layoutBgImgList: [
       {
@@ -128,15 +134,28 @@ export const request = {
   ...errorConfig,
 };
 
+export function useQiankunStateForSlave() {
+  const [masterState, setMasterState] = useState({});
+
+  return {
+    masterState,
+    setMasterState,
+  };
+}
+
 export const qiankun = {
   apps: [
     {
-      name: 'app1',
+      name: 'iam',
       entry: '//localhost:7001',
     },
     {
-      name: 'app2',
+      name: 'rd',
       entry: '//localhost:7002',
+    },
+    {
+      name: 'workflow',
+      entry: '//localhost:7003',
     },
   ],
 };

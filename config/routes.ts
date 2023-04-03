@@ -108,11 +108,16 @@ export default [
     name: '研发平台',
     icon: 'CodeOutlined',
     access: 'filterAccess',
+    microApp: 'rd',
     routes: [
+      {
+        path: '/rd/workbench',
+        name: '工作台',
+        access: 'filterAccess',
+      },
       {
         path: '/rd/project',
         name: '项目管理',
-        component: './Admin',
         access: 'filterAccess',
       },
       {
@@ -173,47 +178,44 @@ export default [
     path: '/iam',
     name: '身份管理',
     icon: 'SafetyOutlined',
-    access: 'filterAccess',
+    microApp: 'iam',
     routes: [
       {
         path: '/iam/account',
         name: '账号管理',
-        component: './Admin',
-        access: 'filterAccess',
+      },
+      {
+        path: '/iam/user/login',
+        hideInMenu: true,
+        name: '登入',
       },
       {
         path: '/iam/role',
         name: '角色管理',
-        component: './Admin',
-        access: 'filterAccess',
       },
       {
-        path: '/iam/power',
+        path: '/iam/permission',
         name: '权限管理',
-        component: './Admin',
-        access: 'filterAccess',
       },
       {
-        path: '/iam/application',
-        name: '应用管理',
-        component: './Admin',
-        access: 'filterAccess',
+        path: '/iam/system',
+        name: '系统管理',
       },
     ],
   },
   {
     name: '微应用案例',
-    path: '/app1/',
-    microApp: 'app1',
+    path: '/iam/',
+    microApp: 'iam',
     routes: [
       // 配置 app2 关联的路由
       {
         name: 'welcome',
-        path: '/app1/welcome',
+        path: '/iam/welcome',
       },
       {
         name: 'list',
-        path: '/app1/list',
+        path: '/iam/list',
       },
     ],
   },
@@ -221,9 +223,6 @@ export default [
     path: '/',
     redirect: '/welcome',
   },
-  {
-    path: '*',
-    layout: false,
-    component: './404',
-  },
+  { path: '/error/:code', layout: false, component: './error' },
+  { path: '*', redirect: '/error/404' },
 ];
