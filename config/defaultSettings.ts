@@ -18,7 +18,7 @@ const Settings: LayoutSettings & {
   colorWeak: false,
   title: 'Meshed Cloud 研发中台',
   pwa: false,
-  logo: 'http://s.meshed.cn/meshed/svg/logo-no-background.svg',
+  logo: 'http://s.meshed.cn/meshed/svg/logo.svg',
   iconfontUrl: '',
 };
 

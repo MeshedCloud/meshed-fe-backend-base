@@ -147,15 +147,15 @@ export const qiankun = {
   apps: [
     {
       name: 'iam',
-      entry: '//localhost:7001',
+      entry: '/micro/iam.meshed.cn/',
     },
     {
       name: 'rd',
-      entry: '//localhost:7002',
+      entry: '/micro/rd.meshed.cn/',
     },
     {
       name: 'workflow',
-      entry: '//localhost:7003',
+      entry: '/micro/flow.meshed.cn/',
     },
   ],
 };

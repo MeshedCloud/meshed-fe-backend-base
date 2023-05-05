@@ -10,7 +10,14 @@
  * @doc https://umijs.org/docs/guides/proxy
  */
 export default {
-  dev: {},
+  dev: {
+    // localhost:8000/api/** -> https://preview.pro.ant.design/api/**
+    '/api/iam/': {
+      target: 'https://api.meshed.cn',
+      changeOrigin: true,
+      pathRewrite: { '^/api': '' },
+    },
+  },
   /**
    * @name 详细的代理配置
    * @doc https://github.com/chimurai/http-proxy-middleware
