@@ -135,11 +135,11 @@ export const request = {
 };
 
 export function useQiankunStateForSlave() {
-  const [masterState, setMasterState] = useState({});
+  const [globalState, setGlobalState] = useState<any>();
 
   return {
-    masterState,
-    setMasterState,
+    globalState,
+    setGlobalState,
   };
 }
 

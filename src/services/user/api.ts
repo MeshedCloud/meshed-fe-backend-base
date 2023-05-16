@@ -10,8 +10,9 @@ export async function getCurrentInfo(options?: { [key: string]: any }) {
 
 /** 退出登录接口 POST /api/login/outLogin */
 export async function logout(options?: { [key: string]: any }) {
+  const res = await Request.delete<API.CurrentUser>('/api/iam/logout', {}, options);
   localStorage.removeItem('TOKEN');
-  return Request.delete<API.CurrentUser>('/api/iam/logout', {}, options);
+  return res;
 }
 
 /** 此处后端没有提供注释 GET /api/notices */
